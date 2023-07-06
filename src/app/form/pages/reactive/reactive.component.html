@@ -1,0 +1,46 @@
+<div class="container mt-5 card">
+    <div class="py-5">
+        <h2 class="flex center">Reactive From</h2>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()" >
+            <div class="grid">
+                <div class="input">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" formControlName="name" required>
+                    <ng-container *ngIf="myForm.controls['name']?.touched && myForm.controls['name']?.invalid" class="error">
+                        <span class="error">Name is required.</span>
+                    </ng-container>
+                </div>
+
+                <div class="input">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" formControlName="email" required>
+                    <ng-container *ngIf="myForm.controls['email']?.touched && myForm.controls['email']?.invalid" class="error">
+                        <span class="error">Email is required.</span>
+                        <span class="error">Invalid email format.</span>
+                    </ng-container>
+                </div>
+
+                <div class="input">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" formControlName="password" required>
+                    <ng-container *ngIf="myForm.controls['password']?.touched && myForm.controls['password']?.invalid" class="error">
+                        <span class="error">Password is required.</span>
+                        <span class="error">Password must be at least 8 characters long.</span>
+                    </ng-container>
+                </div>
+                <div class="input">
+                    <label for="gender">Gender</label>
+                    <select name="gender" id="gender" formControlName="gender">
+                        <option *ngFor="let gender of genders" [label]="gender.label" [value]="gender.key"></option>
+                    </select>
+                    <ng-container *ngIf="myForm.controls['gender']?.touched && myForm.controls['gender']?.invalid" class="error">
+                        <span class="error">Gender is required.</span>
+                    </ng-container>
+                </div>
+                <div class="flex center">
+                    <button class="button" type="submit" [disabled]="!myForm.valid">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

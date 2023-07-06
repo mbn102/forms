@@ -10,5 +10,4 @@ import { NxWelcomeComponent } from './nx-welcome.component';
   styleUrls: ['./app.component.less'],
 })
 export class AppComponent {
-  title = 'forms';
 }

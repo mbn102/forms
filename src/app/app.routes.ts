@@ -1,3 +1,10 @@
-import { Route } from '@angular/router';
+import {Route} from '@angular/router';
 
-export const appRoutes: Route[] = [];
+
+//Todo add roleGuard to routes
+export const appRoutes: Route[] = [
+    {
+        path:'',
+        loadChildren:()=>import('./form/forms-routes').then((m)=>m.formsRoutes)
+    }
+];
